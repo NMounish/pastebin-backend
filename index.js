@@ -3,7 +3,6 @@ const path = require("path");
 const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
-
 const rt = require("./routes/pasteroute");
 
 mongoose
@@ -15,7 +14,17 @@ const app = express();
 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://pastebin-frontend.vercel.app" // future frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
+
+
+app.options("*", cors());
 
 
 app.use("/api", rt); 
