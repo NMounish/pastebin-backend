@@ -22,11 +22,6 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
 }));
-
-
-app.options("*", cors());
-
-
 app.use("/api", rt); 
 
 app.get("/", (req, res) => {
