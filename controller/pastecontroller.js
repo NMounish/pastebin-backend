@@ -35,8 +35,7 @@ let createPaste = async (req, res) => {
     await data.save();
 
     res.status(201).json({
-      id: data._id,
-      url: `${req.protocol}://${req.get("host")}/p/${data._id}`,
+      id: data._id
     });
   } catch {
     res.status(500).json({ error: "Error creating paste" });
