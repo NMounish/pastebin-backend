@@ -35,7 +35,7 @@ let createPaste = async (req, res) => {
     await data.save();
 
     res.status(201).json({
-      id: data._id
+      id: data._id,
     });
   } catch {
     res.status(500).json({ error: "Error creating paste" });
@@ -51,12 +51,10 @@ let getPaste = async (req, res) => {
 
     let now = getNow(req);
 
-    
     if (obj.expiresAt && now > obj.expiresAt) {
       return res.status(404).json({ error: "Paste expired" });
     }
 
-    
     if (obj.maxViews !== null && obj.views >= obj.maxViews) {
       return res.status(404).json({ error: "View limit exceeded" });
     }
@@ -73,7 +71,6 @@ let getPaste = async (req, res) => {
     res.status(500).json({ error: "Error fetching paste" });
   }
 };
-
 
 let viewPaste = async (req, res) => {
   try {
@@ -95,7 +92,6 @@ let viewPaste = async (req, res) => {
     obj.views = obj.views + 1;
     await obj.save();
 
-    
     let safeContent = obj.content.replace(/</g, "&lt;");
 
     res.send(`
