@@ -20,13 +20,8 @@ app.use(cors());
 
 app.use("/api", rt); 
 
-
-const frontendPath = path.join(__dirname, "../Ftend/dist"); 
-app.use(express.static(frontendPath));
-
-
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
+app.get("/", (req, res) => {
+  res.json({ message: "Pastebin backend running" });
 });
 
 
