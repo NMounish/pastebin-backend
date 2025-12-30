@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://pastebin-frontend.vercel.app" // future frontend
+    "https://pastebin-frontend-bice.vercel.app" // future frontend
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
